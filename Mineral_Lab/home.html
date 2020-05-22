@@ -118,7 +118,7 @@
 			</script>
 			<div id="figure_1.4" style="margin-top: 2em"></div>
 			<script type="text/javascript">
-				var draw = SVG("figure_1.4").size(1400, 1000);
+				var draw = SVG("figure_1.4").size(1400, 350);
 				draw.image('./figures/figure_1.4.jpg').move(610, 60);
 				draw.text("Figure 1.4.  Crystalline aggregates and void-filling coatings of malachite (A) and the \nfibrous form of satin spar gypsum (B) are uniquely diagnostic properties of these minerals.").move(620, 20)
 				draw.text(function(add) {
@@ -136,6 +136,31 @@
 					add.tspan("Nodular - irregular, rounded masses.").newLine();
 					add.tspan("Granular - made up of closely packed grains.").newLine();
 				}).move(25, 145);
+			</script>
+			<div id="table_1.2" ></div>
+			<script type="text/javascript">
+				var draw = SVG("table_1.2").size(1400, 540);
+				draw.image('./figures/table_1.2.jpg').size(700, 500).move(620, 40);
+				draw.text("Table 1.2 (National Park Service at nps.gov)").move(785, 20);
+				draw.text(function(add) {
+					add.tspan("Hardness").style({'font-weight': 'bold'});
+					add.tspan(" - The hardness of a mineral is a measure of its resistance to");
+					add.tspan("abrasion and is related to its internal structure and to the strength of").newLine();
+					add.tspan("chemical bonds holding its constituent atoms together.  A mineral's relative").newLine();
+					add.tspan("hardness is based on a reference scale comparing minerals to each other").newLine();
+					add.tspan("(1-soft to 10-hard) which was originallydeveloped by the mineralogist,").newLine();
+					add.tspan("Friedrich Mohs, and appears in Table 1.2.  Any mineral will scratch a").newLine();
+					add.tspan("mineral lower on the scale, and will be scratched by a mineral higher on").newLine();
+					add.tspan("the scale.  Several common items may be used to determine the relative").newLine();
+					add.tspan("hardness of a mineral.").newLine();
+				}).move(0, 100);
+			</script>
+			<p style="margin-top: 2em"><d class="bold">Other Physical Properties</d> - Several other physical properties that are diagnostic for particular minerals are discussed below:
+			</p>
+			<div id="figure_1.5" style="margin-top: 2em"></div>
+			<script type="text/javascript">
+				var draw = SVG("figure_1.5").size(1400, 1000);
+				draw.image('./figures/figure_1.5.jpg').move(620, 40);
 			</script>
 		</div>
 		
