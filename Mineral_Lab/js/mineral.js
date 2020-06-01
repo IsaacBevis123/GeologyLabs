@@ -1,27 +1,51 @@
 export default class Mineral{
 
 	constructor(){
-		let num = Math.round(Math.random() * 39);
-		this.mineral = Mineral.MINERALS[num];
+		this.nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39];
+		let num = Math.round(Math.random() * this.nums.length - 1);
+		this.mineral = Mineral.MINERALS[this.nums[num]];
+
+		this.nums.pop(num);
 	}
 
 	drawMineral(draw){
 		switch (this.mineral.files.length){
 			case 2:
-				draw.image("../minerals/" + this.mineral.files[0]).size(400, 300);
-				draw.image("../minerals/" + this.mineral.files[1]).size(400, 300).move(400, 0);
+				this.pic_1 = draw.image("../minerals/" + this.mineral.files[0]).size(400, 300);
+				this.pic_2 = draw.image("../minerals/" + this.mineral.files[1]).size(400, 300).move(400, 0);
+				this.pic_3 = null;
 				break;
 
 			case 3:
-				draw.image("../minerals/" + this.mineral.files[0]).size(400, 300);
-				draw.image("../minerals/" + this.mineral.files[1]).size(400, 300).move(400, 0);
-				draw.image("../minerals/" + this.mineral.files[2]).size(400, 300).move(800, 0);
+				this.pic_1 = draw.image("../minerals/" + this.mineral.files[0]).size(400, 300);
+				this.pic_2 = draw.image("../minerals/" + this.mineral.files[1]).size(400, 300).move(400, 0);
+				this.pic_3 = draw.image("../minerals/" + this.mineral.files[2]).size(400, 300).move(800, 0);
 				break;
 
 			default:
 				console.log("ERROR");
 				break;
 		}
+	}
+
+	eraseMineral() {
+		if (this.pic_1 != null){
+			this.pic_1.remove();
+		}
+		
+		if (this.pic_2 != null){
+			this.pic_2.remove();
+		}
+		
+		if (this.pic_3 != null){
+			this.pic_3.remove();
+		}
+	}
+
+	loadNext() {
+		let num = Math.round(Math.random() * this.nums.length - 1);
+		this.mineral = Mineral.MINERALS[this.nums[num]];
+		this.nums.pop(num);
 	}
 
 	testMineral(i, draw){
