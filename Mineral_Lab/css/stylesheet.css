@@ -15,6 +15,11 @@ h2 {
 	text-align: center;
 }
 
+h3 {
+	font-size: 125%;
+	text-align: center;
+}
+
 #step_1 {
 	margin-top: 2em;
 }

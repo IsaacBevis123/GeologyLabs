@@ -5,14 +5,40 @@
 		<link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
 	</head>
 	<body>
-		<h1>Mineral Identification and Classification</h1>
-		<h2 id="mineralNum">Mineral 1</h2>
-		<div id="mineralPics" style="text-align: center; margin-top: 2em"></div>
-		<h2 id="stepNum">Step 1</h2>
-		<div id="assignment" style="text-align: center; margin-top: 2em"></div>
-		<div id="nextButton" style="text-align: center; margin-top: 2em"></div>
-
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
+		<script src="../html2pdf/dist/html2pdf.bundle.min.js"></script>
 		<script type="module" src="../js/main.js"></script>
+		<h1>Mineral Identification and Classification</h1>
+		<div id="labActivity">
+			<h2 id="mineralNum">Mineral 1/42</h2>
+			<div id="mineralPics" style="text-align: center; margin-top: 2em"></div>
+			<h2 id="stepNum">Step 1</h2>
+			<h3 id="desc"></h3>
+			<div id="mineralNameDiv" style="text-align: center;">
+				<input id="mineralName" type="text"/>
+			</div>
+			<div id="assignment" style="text-align: center; margin-top: 2em"></div>
+		</div>
+		
+		<div id="inputs" style="text-align: center">
+			<p>Enter your name in the box below, then download the report.</p>
+			<input id="studentName" type="text"/>
+			<input type="button" onclick="downloadPDF()" type="button" value="download"/>
+			<script type="text/javascript">
+				function downloadPDF(){
+					var scoreDiv = document.getElementById("score");
+					var name = document.getElementById("studentName");
+					html2pdf().from(scoreDiv).set({
+				          margin: 1,
+				          filename: name.value + '-results.pdf',
+				          html2canvas: { scale: 2 },
+				          jsPDF: {orientation: 'portrait', unit: 'in', format: 'letter', compressPDF: true}
+				        }).save();
+				}
+			</script>
+		</div>
+		
+		<div id="score"></div>
+
 	</body>
 </html>

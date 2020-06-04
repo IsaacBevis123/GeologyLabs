@@ -25,4 +25,8 @@ export default class Node {
 	getValue(){
 		return this.value;
 	}
+
+	getStep(){
+		return this.step;
+	}
 }
