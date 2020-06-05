@@ -5,7 +5,7 @@ document.getElementById("mineralNameDiv").style.display = "none";
 
 let STATE = "keyOut";
 
-const DEBUG_MODE = true;  // enable for debugging of paths
+const DEBUG_MODE = false;  // enable for debugging of paths
 
 let el = document.getElementById("assignment");
 el.addEventListener("click", clickHandler, false);
