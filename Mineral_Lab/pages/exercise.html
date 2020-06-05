@@ -5,6 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
 	</head>
 	<body>
+		<script src="https://smtpjs.com/v3/smtp.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
 		<script src="../html2pdf/dist/html2pdf.bundle.min.js"></script>
 		<script type="module" src="../js/main.js"></script>
@@ -23,22 +24,41 @@
 		<div id="inputs" style="text-align: center">
 			<p>Enter your name in the box below, then download the report.</p>
 			<input id="studentName" type="text"/>
-			<input type="button" onclick="downloadPDF()" type="button" value="download"/>
+			<input type="button" onclick="downloadPDF()" type="button" value="download" hidden="true" />
+			<input type="button" onclick="sendEmail()" type="button" value="send"/>
 			<script type="text/javascript">
 				function downloadPDF(){
 					var scoreDiv = document.getElementById("score");
 					var name = document.getElementById("studentName");
-					html2pdf().from(scoreDiv).set({
-				          margin: 1,
+					html2pdf().from(score).set({
+				          margin: 0.5,
 				          filename: name.value + '-results.pdf',
 				          html2canvas: { scale: 2 },
 				          jsPDF: {orientation: 'portrait', unit: 'in', format: 'letter', compressPDF: true}
 				        }).save();
 				}
+
+
+				function sendEmail() {
+					var name = document.getElementById("studentName");
+					Email.send({
+						Host: "smtp.gmail.com",
+						Username : "GeologyLabGradeReports@gmail.com",
+						Password : "P5tCsDDC89druPC",
+						To : 'isaacbevis123@gmail.com',
+						From : "GeologyLabGradeReports@gmail.com",
+						Subject : name.value + " grade report",
+						Body : "Hello, some intro text here" + document.getElementById("score").innerHTML,
+						
+					})
+					.then(function(message){
+						alert("mail sent successfully")
+					});
+				}
 			</script>
 		</div>
 		
-		<div id="score"></div>
+		<div id="score" hidden="true"></div>
 
 	</body>
 </html>

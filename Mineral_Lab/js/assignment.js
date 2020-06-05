@@ -102,9 +102,14 @@ export default class Assignment {
 		}
 	}
 
-	addStudentAnswer(name){
-		this.answers[this.mineralNum - 1].push(name);
-		console.log("added: " + this.mineral.mineral.name + ": " + this.answers[this.mineralNum - 1][0][0] + " Incorrect out of " + this.answers[this.mineralNum - 1][0][1] + ", student entered name: " + this.answers[this.mineralNum - 1][2])
+	addStudentAnswer(name, debug){
+		if (debug){
+			this.answers.push([["debug mode on...", this.path.getCurrent().getAllNext().length], this.mineral.mineral.name])
+		}
+		else{
+			this.answers[this.mineralNum - 1].push(name);
+			console.log("added: " + this.mineral.mineral.name + ": " + this.answers[this.mineralNum - 1][0][0] + " Incorrect out of " + this.answers[this.mineralNum - 1][0][1] + ", student entered name: " + this.answers[this.mineralNum - 1][2]);
+		}
 	}
 
 	advance(i){

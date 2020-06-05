@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://smtpjs.com/v3/smtp.js"></script>  
+	<script src="../html2pdf/dist/html2pdf.bundle.min.js"></script>
+	<script type="text/javascript">
+		let data = "<ol>this is a list<li>item 1</li><test 2</li></ol>";
+		function sendEmail() {
+			Email.send({
+				Host: "smtp.gmail.com",
+				Username : "GeologyLabGradeReports@gmail.com",
+				Password : "P5tCsDDC89druPC",
+				To : 'isaacbevis123@gmail.com',
+				From : "GeologyLabGradeReports@gmail.com",
+				Subject : "GeologyLab_Test",
+				Body : document.getElementById("test").innerHTML,
+				
+			})
+			.then(function(message){
+				alert("mail sent successfully")
+			});
+		}
+	</script>
+</head>
+<body>  
+	<form method="post">
+		<input type="button" value="Send Email" onclick="sendEmail()"/>
+	</form>  
+	<div id="test">
+		<ol>
+			<li>hi</li>
+			<li>hello</li>
+			<li>test</li>
+		</ol>
+		<p>this is definentally a test</p>
+	</div>
+</body>
+</html>

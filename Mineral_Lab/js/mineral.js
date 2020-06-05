@@ -45,8 +45,10 @@ export default class Mineral{
 	}
 
 	checkCorrect(i, stepIndex){
-		// seperate handler for first step
-		if (this.mineral.correct[stepIndex].length == 2){
+		if (this.isSecondOpt){
+			return (this.mineral.correct[stepIndex][1] == i);
+		}
+		else if (this.mineral.correct[stepIndex].length == 2){
 			if (i == this.mineral.correct[stepIndex][0]){
 				return true;
 			}
@@ -59,14 +61,9 @@ export default class Mineral{
 			}
 		}
 		else {
-			if (this.isSecondOpt){
-				return (this.mineral.correct[stepIndex][1] == i);
-			}
-			else {
-				return (this.mineral.correct[stepIndex][0] == i);
-			}
+			return (this.mineral.correct[stepIndex][0] == i);
 		}
-		
+				
 	}
 
 	loadNext() {

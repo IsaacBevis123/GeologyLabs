@@ -5,7 +5,7 @@ document.getElementById("mineralNameDiv").style.display = "none";
 
 let STATE = "keyOut";
 
-let DEBUG_MODE = false;  // enable for debugging of paths
+const DEBUG_MODE = true;  // enable for debugging of paths
 
 let el = document.getElementById("assignment");
 el.addEventListener("click", clickHandler, false);
@@ -17,12 +17,8 @@ assignment.drawCurrentOptions();
 
 async function clickHandler(e) {
 	if (e.target.dataset.type == "nextStep" && STATE == "keyOut") {
-		if (DEBUG_MODE){
-			assignment.advance(e.target.dataset.opt);
-			assignment.drawCurrentOptions();
-		}
-		else if (e.target.dataset.opt < assignment.path.getCurrent().getAllNext().length){
-			if (assignment.checkCorrect(e.target.dataset.opt)){
+		if (e.target.dataset.opt < assignment.path.getCurrent().getAllNext().length){
+			if (assignment.checkCorrect(e.target.dataset.opt) || DEBUG_MODE){
 				if (assignment.step == 4){
 					STATE = "typeName";
 					assignment.markCorrect(e.target.dataset.opt);
@@ -56,7 +52,7 @@ function keyHandler(e){
 			console.log("nothing to see here...")
 		}
 		else{
-			assignment.addStudentAnswer(document.getElementById("mineralName").value)
+			assignment.addStudentAnswer(document.getElementById("mineralName").value, DEBUG_MODE)
 			// if there are no more minerals left, end assignment
 			if(!assignment.loadNextMineral()){
 				recordResults(assignment.getScore());
@@ -77,10 +73,13 @@ function keyHandler(e){
 function recordResults(scoreList){
 	document.getElementById("inputs").style.display = "block";
 	document.getElementById("assignment").style.display = "none";
+	document.getElementById("mineralPics").style.display = "none";
+	document.getElementById("desc").style.display = "none";
+	document.getElementById("stepNum").style.display = "none";
 
 	var scoreDiv = document.getElementById("score");
 
-	let data = "<h1 style='margin-top: 2em; text-align: center;'>Mineral Identification Results</h1>";
+	let data = "<h1 style='margin-top: 2em; text-align: center;'>Mineral Identification Grade Report</h1>";
 	data += "<ol>";
 	for (let i = 0; i < scoreList.length; i++){
 		data += "\n<li>" + scoreList[i][1] + ": " + scoreList[i][0][0] + " incorect out of " + scoreList[i][0][1] + ", name entered: " + scoreList[i][2];
