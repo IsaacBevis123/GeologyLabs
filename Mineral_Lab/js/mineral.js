@@ -288,7 +288,7 @@ Mineral.MINERALS = {
 	38: {
 		name: "Talc",
 		files: ["Talc/Talc_1.jpg", "Talc/Talc_2.jpg", "Talc/Talc_3.jpg"],
-		correct: [[2], [1], [1], [4]]
+		correct: [[2], [1], [1, 0], [4, 4]]
 	},
 	39: {
 		name: "Tourmaline",

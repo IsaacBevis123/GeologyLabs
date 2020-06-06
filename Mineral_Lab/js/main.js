@@ -28,10 +28,14 @@ async function clickHandler(e) {
 					assignment.advance(e.target.dataset.opt);
 					assignment.drawCurrentOptions();
 					if (assignment.step == 4){
+						let temp_link = "../figures/" + assignment.table[1]
 						document.getElementById("mineralNameDiv").style.display = "block";
 						document.getElementById("desc").innerHTML = "Click inside the box of one of the following " 
-				 			+ assignment.path.getCurrent().getAllNext().length + " option(s)" + "\n Then use " + assignment.table + " to determine the name of the mineral and type your answer in the box below"
-				 			+ "\n Press enter to continue";
+				 			+ assignment.path.getCurrent().getAllNext().length + " option(s)." 
+				 			+ "  Then use " + "<a href='" + temp_link + "' target='popup' onclick='window.open(" + temp_link + ")'>" 
+				 			+ assignment.table[0] + "</a>"
+				 			+ " to determine the name of the mineral and type your answer in the box below."
+				 			+ "  Press enter to continue";
 					}
 				}
 			}

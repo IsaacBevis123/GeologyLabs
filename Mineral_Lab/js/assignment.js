@@ -138,7 +138,7 @@ export default class Assignment {
 }
 
 Assignment.figures = {
-	0: "Table 1.3",
-	1: "Table 1.4",
-	2: "Table 1.5"
+	0: ["Table 1.3", "table_1.3.jpg"],
+	1: ["Table 1.4", "table_1.4.jpg"],
+	2: ["Table 1.5", "table_1.5.jpg"]
 };
