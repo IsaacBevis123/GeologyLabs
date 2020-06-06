@@ -22,10 +22,10 @@
 		</div>
 		
 		<div id="inputs" style="text-align: center">
-			<p>Enter your name in the box below, then download the report.</p>
+			<p>Enter your name in the box below, then press submit.</p>
 			<input id="studentName" type="text"/>
 			<input type="button" onclick="downloadPDF()" type="button" value="download" hidden="true" />
-			<input type="button" onclick="sendEmail()" type="button" value="send"/>
+			<input type="button" onclick="sendEmail()" type="button" value="submit"/>
 			<script type="text/javascript">
 				function downloadPDF(){
 					var scoreDiv = document.getElementById("score");
@@ -52,7 +52,7 @@
 						
 					})
 					.then(function(message){
-						alert("mail sent successfully")
+						alert("assignment submitted succsefully");
 					});
 				}
 			</script>
