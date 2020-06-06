@@ -11,7 +11,6 @@ export default class Mineral{
 	}
 
 	drawMineral(draw){
-		console.log("mineral is " + this.mineral.name)
 		switch (this.mineral.files.length){
 			case 2:
 				this.pic_1 = draw.image("../minerals/" + this.mineral.files[0]).size(400, 300);
@@ -50,11 +49,9 @@ export default class Mineral{
 			if (this.mineral.correct[stepIndex].length == 2){
 				if (i == this.mineral.correct[stepIndex][0]){
 					this.isSecondOpt = false;
-					console.log("this.isSecondOpt = false")
 					return true;
 				}
 				else if (i == this.mineral.correct[stepIndex][1]){
-					console.log("this.isSecondOpt = true")
 					this.isSecondOpt = true;
 					return true;
 				}

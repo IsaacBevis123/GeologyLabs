@@ -108,7 +108,6 @@ export default class Assignment {
 		}
 		else{
 			this.answers[this.mineralNum - 1].push(name);
-			console.log("added: " + this.mineral.mineral.name + ": " + this.answers[this.mineralNum - 1][0][0] + " Incorrect out of " + this.answers[this.mineralNum - 1][0][1] + ", student entered name: " + this.answers[this.mineralNum - 1][2]);
 		}
 	}
 
