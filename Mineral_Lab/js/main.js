@@ -2,6 +2,7 @@ import Assignment from './assignment.js';
 
 document.getElementById("inputs").style.display = "none";
 document.getElementById("mineralNameDiv").style.display = "none";
+document.getElementById("summeryQuestions").style.display = "none";
 
 let STATE = "keyOut";
 
@@ -51,35 +52,38 @@ async function clickHandler(e) {
 }
 
 function keyHandler(e){
-	if (STATE == "typeName" && e.key == "Enter"){
-		if (document.getElementById("mineralName").value == ""){
-			console.log("nothing to see here...")
-		}
-		else{
-			assignment.addStudentAnswer(document.getElementById("mineralName").value, DEBUG_MODE)
-			// if there are no more minerals left, end assignment
-			if(!assignment.loadNextMineral()){
-				recordResults(assignment.getScore());
+	if (STATE == "typeName"){
+		if (e.key == "Enter"){
+			if (document.getElementById("mineralName").value == ""){
+				alert("Please type a mineral name in the text box.");
 			}
 			else{
-				assignment.drawCurrentOptions();
-				document.getElementById("mineralNum").innerHTML = "Mineral " + assignment.mineralNum + "/42";
+				assignment.addStudentAnswer(document.getElementById("mineralName").value, DEBUG_MODE)
+				// if there are no more minerals left, end assignment
+				if(!assignment.loadNextMineral()){
+					recordResults(assignment.getScore());
+					document.getElementById("summeryQuestions").style.display = "block";
+					document.getElementById("mineralPics").style.display = "none";
+					document.getElementById("assignment").style.display = "none";
+					document.getElementById("stepNum").style.display = "none";
+					document.getElementById("mineralNameDiv").style.display = "none";
+					document.getElementById("inputs").style.display = "block";
+					document.getElementById("desc").innerHTML = "Answer the following symmery questions";
+				}
+				else{
+					assignment.drawCurrentOptions();
+					document.getElementById("mineralNum").innerHTML = "Mineral " + assignment.mineralNum + "/42";
+				}
+				STATE = "keyOut";
+				document.getElementById("mineralName").value = "";
+				document.getElementById("mineralNameDiv").style.display = "none";
 			}
-			STATE = "keyOut";
-			document.getElementById("mineralName").value = "";
-			document.getElementById("mineralNameDiv").style.display = "none";
 		}
-		
 	}
 }
 
 
 function recordResults(scoreList){
-	document.getElementById("inputs").style.display = "block";
-	document.getElementById("assignment").style.display = "none";
-	document.getElementById("mineralPics").style.display = "none";
-	document.getElementById("desc").style.display = "none";
-	document.getElementById("stepNum").style.display = "none";
 
 	var scoreDiv = document.getElementById("score");
 

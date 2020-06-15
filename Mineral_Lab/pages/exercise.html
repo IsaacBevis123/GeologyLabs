@@ -20,12 +20,45 @@
 			</div>
 			<div id="assignment" style="text-align: center; margin-top: 2em"></div>
 		</div>
+
+		<div id="summeryQuestions" style="margin-top: 2em">
+			<p style="padding-left: 35em; padding-bottom: 1em">How would you distinguish between the following mineral pairs?</p>
+			<ol style="padding-left: 37em; list-style-type: decimal; padding-bottom: 5em">
+				<li>quartz and albite feldspar
+					<input id="1.a" type="text"/>
+				</li>
+				<li>muscovite and biotite mica
+					<input id="1.b" type="text"/>
+				</li>
+				<li>albite and orthoclase feldspar
+					<input id="1.c" type="text"/>
+				</li>
+				<li>serpentine and chlorite
+					<input id="1.d" type="text"/>
+				</li>
+				<li>olivine and quartz
+					<input id="1.e" type="text"/>
+				</li>
+				<li>hornblende and augite
+					<input id="1.f" type="text"/>
+				</li>
+				<li>pyrite and chalcopyrite
+					<input id="1.g" type="text"/>
+				</li>
+				<li>calcite and halite
+					<input id="1.h" type="text"/>
+				</li>
+				<li>magnetite and galena
+					<input id="1.i" type="text"/>
+				</li>
+			</ol>
+		</div>
 		
 		<div id="inputs" style="text-align: center">
 			<p>Enter your name in the box below, then press submit.</p>
 			<input id="studentName" type="text"/>
 			<input type="button" onclick="downloadPDF()" type="button" value="download" hidden="true" />
-			<input type="button" onclick="sendEmail()" type="button" value="submit"/>
+			<input type="button" onclick="submit()" type="button" value="submit"/>
 			<script type="text/javascript">
 				function downloadPDF(){
 					var scoreDiv = document.getElementById("score");
@@ -36,6 +69,37 @@
 				          html2canvas: { scale: 2 },
 				          jsPDF: {orientation: 'portrait', unit: 'in', format: 'letter', compressPDF: true}
 				        }).save();
+				}
+
+				function submit() {
+					
+
+					var ans = [document.getElementById("1.a").value, document.getElementById("1.b").value, document.getElementById("1.c").value
+							,document.getElementById("1.d").value, document.getElementById("1.e").value, document.getElementById("1.f").value
+							,document.getElementById("1.g").value, document.getElementById("1.h").value, document.getElementById("1.i").value];
+
+					console.log(ans)
+
+					for (let i = 0; i < ans.length; i++) {
+						console.log("ans[i] = " + ans[i])
+						if (ans[i] == ""){
+							alert("Please answer all summery questions.");
+							return;
+						}
+					}
+
+					if (document.getElementById("studentName").value == ""){
+						alert("Please enter your name.");
+						return;
+					}
+
+					document.getElementById("score").innerHTML += "<p style='margin-top: 2em'>Summery question responses</p>";
+					for (let i = 0; i < ans.length; i++){
+						document.getElementById("score").innerHTML += ("<p style='margin-top: 1em;'>" + (i + 1) + ". " + ans[i]);
+					}
+
+					// submit
+					sendEmail();
 				}
 
 
