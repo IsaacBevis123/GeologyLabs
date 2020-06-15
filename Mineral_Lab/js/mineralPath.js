@@ -81,7 +81,7 @@ export default class MineralPath {
 		this.start.getNext(0).getNext(0).getNext(3).setNext(new Node(["3.5-4.0 H", "None", "Tarnished bronze to purple", "unsually massive"])); // "Chalcopyrite"
 
 		//step 4 branch 0 branch 0 branch 4
-		this.start.getNext(0).getNext(0).getNext(4).setNext(new Node(["2.5 H", "Three, cubic", "Very high SP (7.6)", "Galena"]));
+		this.start.getNext(0).getNext(0).getNext(4).setNext(new Node(["2.5 H", "Three, cubic", "Very high SP (7.6)"])); // "Galena"
 
 		// step 4 branch 0 branch 1 branch 0
 		this.start.getNext(0).getNext(1).getNext(0).setNext(new Node(["5.0-6.0 H", "None", "Brittle; shiny flakes;", "May be submetallic to dull red"])); // "Hematite (iron stone or specular)"

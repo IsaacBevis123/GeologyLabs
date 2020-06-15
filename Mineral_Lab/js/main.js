@@ -64,6 +64,7 @@ function keyHandler(e){
 					recordResults(assignment.getScore());
 					document.getElementById("summeryQuestions").style.display = "block";
 					document.getElementById("mineralPics").style.display = "none";
+					document.getElementById("mineralNum").style.display = "none";
 					document.getElementById("assignment").style.display = "none";
 					document.getElementById("stepNum").style.display = "none";
 					document.getElementById("mineralNameDiv").style.display = "none";

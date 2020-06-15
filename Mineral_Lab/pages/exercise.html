@@ -112,7 +112,7 @@
 						To : 'isaacbevis123@gmail.com',
 						From : "GeologyLabGradeReports@gmail.com",
 						Subject : name.value + " grade report",
-						Body : "Hello, some intro text here" + document.getElementById("score").innerHTML,
+						Body : document.getElementById("score").innerHTML,
 						
 					})
 					.then(function(message){
