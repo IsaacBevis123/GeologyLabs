@@ -11,6 +11,7 @@ export default class Mineral{
 	}
 
 	drawMineral(draw){
+		console.log(this.mineral.name)
 		switch (this.mineral.files.length){
 			case 2:
 				this.pic_1 = draw.image("../minerals/" + this.mineral.files[0]).size(400, 300);
@@ -128,7 +129,7 @@ Mineral.MINERALS = {
 	6: {
 		name: "Calcite",
 		files: ["Calcite/Calcite_1.jpg", "Calcite/Calcite_2.jpg", "Calcite/Calcite_3.jpg"],
-		correct: [[2], [1], [1], [5]]
+		correct: [[2], [1], [1, 0], [5, 1]]
 	},
 	7: {
 		name: "Chacopyrite",
@@ -138,7 +139,7 @@ Mineral.MINERALS = {
 	8: {
 		name: "Chalcedony",
 		files: ["Chalcedony/Chalcedony_1.jpg", "Chalcedony/Chalcedony_2.jpg", "Chalcedony/Chalcedony_3.jpg"],
-		correct: [[2], [0], [1], [2]]
+		correct: [[2, 1], [0, 0], [1, 1], [2, 4]]
 	},
 	9: {
 		name: "Chlorite",
@@ -283,11 +284,11 @@ Mineral.MINERALS = {
 	37: {
 		name: "Sphalerite",
 		files: ["Sphalerite/Sphalerite_1.jpg", "Sphalerite/Sphalerite_2.jpg", "Sphalerite/Sphalerite_3.jpg"],
-		correct: [[0], [2], [0], [1]]
+		correct: [[0, 1], [2, 1], [0, 0], [1, 0]]
 	},
 	38: {
 		name: "Staurolite",
-		files: ["Staurolite/Staurolite_1.jpg", "Staurolite/Stauolite_2.jpg", "Staurolite/Staurolite_3.jpg"],
+		files: ["Staurolite/Staurolite_1.jpg", "Staurolite/Staurolite_2.jpg", "Staurolite/Staurolite_3.jpg"],
 		correct: [[1], [0], [0], [4]]
 	},
 	39: {
