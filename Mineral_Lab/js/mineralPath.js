@@ -69,29 +69,29 @@ export default class MineralPath {
 			.setNext(new Node(["Cleavage absent"], "Test Other Properties"));
 
 		// step 4 branch 0 branch 0 branch 0
-		this.start.getNext(0).getNext(0).getNext(0).setNext(new Node(["5.5-6.0 H", "None", "High SP (5.2); strongly magnetic"]));
+		this.start.getNext(0).getNext(0).getNext(0).setNext(new Node(["5.5-6.0 H", "Cleavage: None", "High SP (5.2); strongly magnetic"]));
 
 		// step 4 branch 0 branch 0 branch 1
-		this.start.getNext(0).getNext(0).getNext(1).setNext(new Node(["1.0 H", "One, curved sheets", "Low SP (2.2); greasy feel;", "smudgy, writes on paper"])); // "Graphite"
+		this.start.getNext(0).getNext(0).getNext(1).setNext(new Node(["1.0 H", "Cleavage: One, curved sheets", "Low SP (2.2); greasy feel;", "smudgy, writes on paper"])); // "Graphite"
 
 		// step 4 branch 0 branch 0 branch 2
-		this.start.getNext(0).getNext(0).getNext(2).setNext(new Node(["6.0-6.5 H", "None", "High SP (4.8-5.0);", "cubic crystals with striated faces"])); // "Pyrite"
+		this.start.getNext(0).getNext(0).getNext(2).setNext(new Node(["6.0-6.5 H", "Cleavage: None", "High SP (4.8-5.0);", "cubic crystals with striated faces"])); // "Pyrite"
 
 		// step 4 branch 0 branch 0 branch 3
-		this.start.getNext(0).getNext(0).getNext(3).setNext(new Node(["3.5-4.0 H", "None", "Tarnished bronze to purple", "unsually massive"])); // "Chalcopyrite"
+		this.start.getNext(0).getNext(0).getNext(3).setNext(new Node(["3.5-4.0 H", "Cleavage: None", "Tarnished bronze to purple", "unsually massive"])); // "Chalcopyrite"
 
 		//step 4 branch 0 branch 0 branch 4
-		this.start.getNext(0).getNext(0).getNext(4).setNext(new Node(["2.5 H", "Three, cubic", "Very high SP (7.6)"])); // "Galena"
+		this.start.getNext(0).getNext(0).getNext(4).setNext(new Node(["2.5 H", "Cleavage: Three, cubic", "Very high SP (7.6)"])); // "Galena"
 
 		// step 4 branch 0 branch 1 branch 0
-		this.start.getNext(0).getNext(1).getNext(0).setNext(new Node(["5.0-6.0 H", "None", "Brittle; shiny flakes;", "May be submetallic to dull red"])); // "Hematite (iron stone or specular)"
+		this.start.getNext(0).getNext(1).getNext(0).setNext(new Node(["5.0-6.0 H", "Cleavage: None", "Brittle; shiny flakes;", "May be submetallic to dull red"])); // "Hematite (iron stone or specular)"
 
 		// step 4 branch 0 branch 1 branch 1
-		this.start.getNext(0).getNext(1).getNext(1).setNext(new Node(["3.0-3.5 H", "None", "Very high SP (8.8-8.9)"])); // "Copper"
+		this.start.getNext(0).getNext(1).getNext(1).setNext(new Node(["3.0-3.5 H", "Cleavage: None", "Very high SP (8.8-8.9)"])); // "Copper"
 
 		// step 4 branch 0 branch 2 branch 0
-		this.start.getNext(0).getNext(2).getNext(0).setNext(new Node(["5.0-5.5 H", "One, not commonly observed", "Stained, rusty, iron-like masses"])) // "Limonite"
-			.setNext(new Node(["3.5-4.0 H", "Six, not all faces easily observed", "Resinous luster"])); // "Sphalerite"
+		this.start.getNext(0).getNext(2).getNext(0).setNext(new Node(["5.0-5.5 H", "Cleavage: One, not commonly observed", "Stained, rusty, iron-like masses"])) // "Limonite"
+			.setNext(new Node(["3.5-4.0 H", "Cleavage: Six, not all faces easily observed", "Resinous luster"])); // "Sphalerite"
 
 		// step 4 branch 1 branch 0 branch 0
 		this.start.getNext(1).getNext(0).getNext(0).setNext(new Node(["5.5-6.0 H", "Dark green to black; Cleavage in", "two directions at nearly 90 degrees"])) // "Augite"

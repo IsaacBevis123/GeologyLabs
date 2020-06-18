@@ -76,20 +76,33 @@
 				}
 
 				function submit() {
-					
 
-					var ans = [document.getElementById("1.a").value, document.getElementById("1.b").value, document.getElementById("1.c").value
+					let letters = ["a", "b", "c", "d", "e", "f", "g", "h"];					
+
+					var ans_1 = [document.getElementById("1.a").value, document.getElementById("1.b").value, document.getElementById("1.c").value
 							,document.getElementById("1.d").value, document.getElementById("1.e").value, document.getElementById("1.f").value
-							,document.getElementById("1.g").value, document.getElementById("1.h").value, document.getElementById("1.i").value];
+							,document.getElementById("1.g").value, document.getElementById("1.h").value];
 
-					console.log(ans)
+					var ans_2 = document.getElementById("2").value;
 
-					for (let i = 0; i < ans.length; i++) {
-						console.log("ans[i] = " + ans[i])
-						if (ans[i] == ""){
+					var ans_3 = document.getElementById("3").value;
+
+					for (let i = 0; i < ans_1.length; i++) {
+						console.log("ans[i] = " + ans_1[i])
+						if (ans_1[i] == ""){
 							alert("Please answer all summery questions.");
 							return;
 						}
+					}
+
+					if(ans_2 == ""){
+						alert("Please answer all summery questions.");
+						return;
+					}
+
+					if(ans_3 == ""){
+						alert("Please answer all summery questions.");
+						return;
 					}
 
 					if (document.getElementById("studentName").value == ""){
@@ -97,10 +110,13 @@
 						return;
 					}
 
-					document.getElementById("score").innerHTML += "<p style='margin-top: 2em'>Summery question responses</p>";
-					for (let i = 0; i < ans.length; i++){
-						document.getElementById("score").innerHTML += ("<p style='margin-top: 1em;'>" + (i + 1) + ". " + ans[i]);
+					document.getElementById("score").innerHTML += "<p style='margin-top: 2em'>Summery question responses:</p>";
+					for (let i = 0; i < ans_1.length; i++){
+						document.getElementById("score").innerHTML += ("<p style='margin-top: 1em;'>" + (i + 1) + "." + letters[i] + ": " + ans_1[i] + "</p>");
 					}
+
+					document.getElementById("score").innerHTML += ("<p style='margin-top: 1em;'>2: " + ans_2 + "</p>");
+					document.getElementById("score").innerHTML += ("<p style='margin-top: 1em;'>3: " + ans_3 + "</p>");
 
 					// submit
 					sendEmail();

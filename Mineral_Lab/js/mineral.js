@@ -11,7 +11,6 @@ export default class Mineral{
 	}
 
 	drawMineral(draw){
-		console.log(this.mineral.name)
 		switch (this.mineral.files.length){
 			case 2:
 				this.pic_1 = draw.image("../minerals/" + this.mineral.files[0]).size(400, 300);
