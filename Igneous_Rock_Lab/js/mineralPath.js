@@ -60,6 +60,18 @@ export default class MineralPath {
 			.setNext(new Node("Mafic minerals dominate; ~Quartz 0-5%", "Other properties"))
 			.setNext(new Node("Mafic minerals > 90%; ~Feldspar minerals < 5%", "Other properties"));
 
+		//step 2 path 1 1
+		this.start.getNext(1).getNext(1).setNext(new Node("Quartz > 20%", "Other properties"))
+			.setNext(new Node("Feldspar minerals dominate; ~Quartz < 20%", "Other properties"))
+			.setNext(new Node("Mafic minerals dominate; ~Quartz 0-5%", "Other properties"))
+			.setNext(new Node("Mafic minerals > 90%; ~Feldspar minerals < 5%", "Other properties"));
+
+		//step 2 path 1 2
+		this.start.getNext(1).getNext(2).setNext(new Node("Quartz > 20%", "Other properties"))
+			.setNext(new Node("Feldspar minerals dominate; ~Quartz < 20%", "Other properties"))
+			.setNext(new Node("Mafic minerals dominate; ~Quartz 0-5%", "Other properties"))
+			.setNext(new Node("Mafic minerals > 90%; ~Feldspar minerals < 5%", "Other properties"));
+
 		//step 3 path 1 0 0
 		this.start.getNext(1).getNext(0).getNext(0).setNext(new Node("Mafic minerals < 10%; ~Orthoclase > Plagioclase", "name"))
 			.setNext(new Node("Mafic minerals > 10%; ~Plagioclase > Orthoclase", "name"));
@@ -75,6 +87,40 @@ export default class MineralPath {
 		//step 3 path 1 0 3
 		this.start.getNext(1).getNext(0).getNext(3).setNext(new Node("Augite and Hornblende dominate; ~Olivine common"))
 			.setNext(new Node("Olivine dominates; ~Black Chromite crystals typical"));
+
+		//step 3 path 1 1 0
+		this.start.getNext(1).getNext(1).getNext(0).setNext(new Node("Mafic minerals < 10%; ~Orthoclase > Plagioclase", "name"))
+			.setNext(new Node("Mafic minerals > 10%; ~Plagioclase > Orthoclase", "name"));
+
+		//step 3 path 1 1 1
+		this.start.getNext(1).getNext(1).getNext(1).setNext(new Node("Orthoclase > Plagioclase; ~Some Hornblende possible", "name"))
+			.setNext(new Node("Plagioclase > Orthoclase; ~Some Augite possible", "name"));
+
+		//step 3 path 1 1 2
+		this.start.getNext(1).getNext(1).getNext(2).setNext(new Node("Na-rich Plagioclase; ~Hornblende and Biotite common"))
+			.setNext(new Node("Ca-rich Plagioclase; ~Augite common, some Olivine"));
+
+		//step 3 path 1 1 3
+		this.start.getNext(1).getNext(1).getNext(3).setNext(new Node("Augite and Hornblende dominate; ~Olivine common"))
+			.setNext(new Node("Olivine dominates; ~Black Chromite crystals typical"));
+
+		//step 3 path 1 2 0
+		this.start.getNext(1).getNext(2).getNext(0).setNext(new Node("Mafic minerals < 10%; ~Orthoclase > Plagioclase", "name"))
+			.setNext(new Node("Mafic minerals > 10%; ~Plagioclase > Orthoclase", "name"));
+
+		//step 3 path 1 2 1
+		this.start.getNext(1).getNext(2).getNext(1).setNext(new Node("Orthoclase > Plagioclase; ~Some Hornblende possible", "name"))
+			.setNext(new Node("Plagioclase > Orthoclase; ~Some Augite possible", "name"));
+
+		//step 3 path 1 2 2
+		this.start.getNext(1).getNext(2).getNext(2).setNext(new Node("Na-rich Plagioclase; ~Hornblende and Biotite common"))
+			.setNext(new Node("Ca-rich Plagioclase; ~Augite common, some Olivine"));
+
+		//step 3 path 1 2 3
+		this.start.getNext(1).getNext(2).getNext(3).setNext(new Node("Augite and Hornblende dominate; ~Olivine common"))
+			.setNext(new Node("Olivine dominates; ~Black Chromite crystals typical"));
+
+		
 	}
 }
 
