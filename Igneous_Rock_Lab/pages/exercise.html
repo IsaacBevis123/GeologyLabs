@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/stylesheet.css">
+	</head>
+	<body>
+		<script src="https://smtpjs.com/v3/smtp.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/2.7.1/svg.min.js"></script>
+		<script src="../html2pdf/dist/html2pdf.bundle.min.js"></script>
+		<script type="module" src="../js/main.js"></script>
+		<h1>Igneous Rock Lab</h1>
+		<div id="labActivity">
+			<h2 id="mineralNum">Igneous Rock 1/23</h2>
+			<div id="mineralPics" style="text-align: center; margin-top: 2em"></div>
+			<h2 id="stepNum">Step 1</h2>
+			<h3 id="desc"></h3>
+			<div id="mineralNameDiv" style="text-align: center;">
+				<input id="mineralName" type="text"/>
+			</div>
+			<div id="assignment" style="text-align: center; margin-top: 2em"></div>
+		</div>
+
+		<div id="summeryQuestions" style="margin-top: 2em">
+			<p style="padding-left: 35em; padding-bottom: 1em">1) How would you distinguish between the following mineral pairs?</p>
+			<ol style="padding-left: 37em; list-style-type: none; padding-bottom: 5em">
+				<li>a. muscovite and biotite mica
+					<input id="1.a" type="text"/>
+				</li>
+				<li>b. plagioclase and orthoclase feldspar
+					<input id="1.b" type="text"/>
+				</li>
+				<li>c. sedimentary hematite and limonite
+					<input id="1.c" type="text"/>
+				</li>
+				<li>d. olivine and quartz
+					<input id="1.d" type="text"/>
+				</li>
+				<li>e. hornblende and augite
+					<input id="1.e" type="text"/>
+				</li>
+				<li>f. pyrite and chalcopyrite
+					<input id="1.f" type="text"/>
+				</li>
+				<li>g. calcite and halite
+					<input id="1.g" type="text"/>
+				</li>
+				<li>h. selenite and satin spar gypsum
+					<input id="1.h" type="text"/>
+				</li>
+			</ol>
+			<p style="padding-left: 35em; padding-bottom: 1em">2) When is using the streak test most useful? 
+				<input id="2" type="text"/></p>
+			
+			<p style="padding-left: 35em; padding-bottom: 1em">3) Explain how you would use common “household” tools to identify a hardness of 4.
+				<input id="3" type="text" type="text"/></p>
+			
+
+		</div>
+		
+		<div id="inputs" style="text-align: center">
+			<p>Enter your name in the box below, then press submit.</p>
+			<input id="studentName" type="text"/>
+			<input type="button" onclick="downloadPDF()" type="button" value="download" hidden="true" />
+			<input type="button" onclick="submit()" type="button" value="submit"/>
+			<script type="text/javascript">
+				function downloadPDF(){
+					var scoreDiv = document.getElementById("score");
+					var name = document.getElementById("studentName");
+					html2pdf().from(score).set({
+				          margin: 0.5,
+				          filename: name.value + '-results.pdf',
+				          html2canvas: { scale: 2 },
+				          jsPDF: {orientation: 'portrait', unit: 'in', format: 'letter', compressPDF: true}
+				        }).save();
+				}
+
+				function submit() {
+
+					let letters = ["a", "b", "c", "d", "e", "f", "g", "h"];					
+
+					var ans_1 = [document.getElementById("1.a").value, document.getElementById("1.b").value, document.getElementById("1.c").value
+							,document.getElementById("1.d").value, document.getElementById("1.e").value, document.getElementById("1.f").value
+							,document.getElementById("1.g").value, document.getElementById("1.h").value];
+
+					var ans_2 = document.getElementById("2").value;
+
+					var ans_3 = document.getElementById("3").value;
+
+					for (let i = 0; i < ans_1.length; i++) {
+						console.log("ans[i] = " + ans_1[i])
+						if (ans_1[i] == ""){
+							alert("Please answer all summery questions.");
+							return;
+						}
+					}
+
+					if(ans_2 == ""){
+						alert("Please answer all summery questions.");
+						return;
+					}
+
+					if(ans_3 == ""){
+						alert("Please answer all summery questions.");
+						return;
+					}
+
+					if (document.getElementById("studentName").value == ""){
+						alert("Please enter your name.");
+						return;
+					}
+
+					document.getElementById("score").innerHTML += "<p style='margin-top: 2em'>Summery question responses:</p>";
+					for (let i = 0; i < ans_1.length; i++){
+						document.getElementById("score").innerHTML += ("<p style='margin-top: 1em;'>" + (i + 1) + "." + letters[i] + ": " + ans_1[i] + "</p>");
+					}
+
+					document.getElementById("score").innerHTML += ("<p style='margin-top: 1em;'>2: " + ans_2 + "</p>");
+					document.getElementById("score").innerHTML += ("<p style='margin-top: 1em;'>3: " + ans_3 + "</p>");
+
+					// submit
+					sendEmail();
+				}
+
+
+				function sendEmail() {
+					var name = document.getElementById("studentName");
+					Email.send({
+						Host: "smtp.gmail.com",
+						Username : "GeologyLabGradeReports@gmail.com",
+						Password : "P5tCsDDC89druPC",
+						To : 'isaacbevis123@gmail.com',
+						From : "GeologyLabGradeReports@gmail.com",
+						Subject : name.value + " grade report",
+						Body : document.getElementById("score").innerHTML,
+						
+					})
+					.then(function(message){
+						alert("assignment submitted succsefully");
+					});
+				}
+			</script>
+		</div>
+		
+		<div id="score" hidden="true"></div>
+
+	</body>
+</html>

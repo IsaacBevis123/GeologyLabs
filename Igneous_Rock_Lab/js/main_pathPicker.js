@@ -6,6 +6,9 @@ document.getElementById("summeryQuestions").style.display = "none";
 
 let STATE = "keyOut";
 
+let paths = [];
+let temp_path = [];
+
 const DEBUG_MODE = true;  // enable for debugging of paths
 
 let el = document.getElementById("assignment");
@@ -16,6 +19,8 @@ let assignment = new Assignment("mineralPics", "assignment");
 assignment.drawMinerals();
 assignment.drawCurrentOptions();
 
+document.getElementById("mineralNum").innerHTML = assignment.mineral.mineral.name;
+
 async function clickHandler(e) {
 	if (e.target.dataset.type == "nextStep" && STATE == "keyOut") {
 		if (e.target.dataset.opt < assignment.path.getCurrent().getAllNext().length){
@@ -24,9 +29,15 @@ async function clickHandler(e) {
 					console.log("first")
 					STATE = "typeName";
 					assignment.markCorrect(e.target.dataset.opt);
-
+					console.log("pushing " + e.target.dataset.opt + "to temp_path");
+					temp_path.push(e.target.dataset.opt);
+					console.log("pushing " + temp_path + "to paths");
+					paths.push([temp_path]);
+					temp_path = [];
 				}
 				else { // step < 4
+					console.log("pushing " + e.target.dataset.opt + "to temp_path");
+					temp_path.push(e.target.dataset.opt)
 					assignment.advance(e.target.dataset.opt);
 					assignment.drawCurrentOptions();
 					if (assignment.isEnd()){
@@ -86,7 +97,7 @@ function keyHandler(e){
 				alert("Please type a mineral name in the text box.");
 			}
 			else{
-				assignment.addStudentAnswer(document.getElementById("mineralName").value, DEBUG_MODE)
+				assignment.addStudentAnswer(document.getElementById("mineralName").value, DEBUG_MODE, paths);
 				// if there are no more minerals left, end assignment
 				if(!assignment.loadNextMineral()){
 					recordResults(assignment.getScore());
@@ -101,7 +112,7 @@ function keyHandler(e){
 				}
 				else{
 					assignment.drawCurrentOptions();
-					document.getElementById("mineralNum").innerHTML = "Mineral " + assignment.mineralNum + "/23";
+					document.getElementById("mineralNum").innerHTML = assignment.mineral.mineral.name;
 				}
 				STATE = "keyOut";
 				document.getElementById("mineralName").value = "";
@@ -119,7 +130,7 @@ function recordResults(scoreList){
 	let data = "<h1 style='margin-top: 2em; text-align: center;'>Mineral Identification Grade Report</h1>";
 	data += "<ol>";
 	for (let i = 0; i < scoreList.length; i++){
-		data += "\n<li>" + scoreList[i][1] + ": " + scoreList[i][0][0] + " incorect out of " + scoreList[i][0][1] + ", name entered: " + scoreList[i][2];
+		data += "\n<li>" + "Path selected: " + scoreList[i][0][i] + "  name: " + scoreList[i][1] + "</li>";
 	}
 	data += "\n</ol>"
 	scoreDiv.innerHTML = data;

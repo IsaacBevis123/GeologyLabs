@@ -1,4 +1,4 @@
-import Rock from './rock.js';
+import Mineral from './mineral.js';
 import MineralPath from './mineralPath.js';
 
 export default class Assignment {
@@ -7,9 +7,9 @@ export default class Assignment {
 		this.answers = [];
 		this.temp_incorrect = 0;
 		this.step = 1;
-		this.rockNum = 1;
-		this.draw_rocks = SVG(pic_id).size(1600, 300);
-		this.rock = new Rock();
+		this.mineralNum = 1;
+		this.draw_minerals = SVG(pic_id).size(1200, 300);
+		this.mineral = new Mineral();
 		this.path = new MineralPath();
 		
 		this.draw_assignment = SVG(assignment_id).size(1200, 600);
@@ -32,15 +32,15 @@ export default class Assignment {
 				,this.draw_assignment.text("").move(910, 320)]);
 	}
 
-	drawRocks() {
-		this.rock.drawRock(this.draw_rocks);
+	drawMinerals() {
+		this.mineral.drawMineral(this.draw_minerals);
 	}
 
-	loadNextRock(){
-		if (this.rock.loadNext()){
-			this.rock.eraseRock();
-			this.rock.drawRock(this.draw_rocks);
-			this.rockNum += 1;
+	loadNextMineral(){
+		if (this.mineral.loadNext()){
+			this.mineral.eraseMineral();
+			this.mineral.drawMineral(this.draw_minerals);
+			this.mineralNum += 1;
 			this.step = 1;
 			this.temp_incorrect = 0;
 			this.path.reset();
@@ -57,8 +57,8 @@ export default class Assignment {
 			return false;
 		}
 		else {
-			//document.getElementById("desc").innerHTML = "Click inside the box of one of the following " + this.path.getCurrent().getAllNext().length + " option(s)";
-			//document.getElementById("stepNum").innerHTML = "Step " + this.step + "; " + this.path.getCurrent().getStep();
+			document.getElementById("desc").innerHTML = "Click inside the box of one of the following " + this.path.getCurrent().getAllNext().length + " option(s)";
+			document.getElementById("stepNum").innerHTML = "Step " + this.step + "; " + this.path.getCurrent().getStep();
 			for (let i = 0; i <= 7; i++){
 				this.opt[i][0].attr({stroke: '#fff'}).attr({fill: '#fff'});
 				this.opt[i][1].clear();
@@ -69,13 +69,7 @@ export default class Assignment {
 				let temp = this.path.getCurrent().getNext(i).getValue();
 				for (let t = 0; t < temp.length; t++)
 				{
-					if (temp[t] == "~"){
-						t++;
-						this.opt[i][1].tspan(temp[t]).newLine();
-					}
-					else {
-						this.opt[i][1].tspan(temp[t]);
-					}
+					this.opt[i][1].tspan(temp[t]).newLine();
 				}
 			}
 			return true;
@@ -85,11 +79,11 @@ export default class Assignment {
 
 	checkCorrect(i){
 		if (i < this.path.getCurrent().getAllNext().length){
-			let isCorrect = this.rock.checkCorrect(i, this.step - 1);
+			let isCorrect = this.mineral.checkCorrect(i, this.step - 1);
 			if (this.step == 4){
 				// record wrong answers
 				if (isCorrect){
-					this.answers.push([[this.temp_incorrect, this.path.getCurrent().getAllNext().length], this.rock.rock.name]);
+					this.answers.push([[this.temp_incorrect, this.path.getCurrent().getAllNext().length], this.mineral.mineral.name]);
 					return isCorrect;
 				}
 				else {
@@ -108,12 +102,24 @@ export default class Assignment {
 		}
 	}
 
-	addStudentAnswer(name, debug){
+	isEnd() {
+		return this.path.isEnd();
+	}
+
+	getEnd() {
+		return this.path.getEnd();
+	}
+
+	addStudentAnswer(name, debug, pickPath){
+		if (pickPath != undefined){
+			this.answers.push([pickPath, this.mineral.mineral.name]);
+			return;
+		}
 		if (debug){
-			this.answers.push([["debug mode on...", this.path.getCurrent().getAllNext().length], this.rock.rock.name])
+			this.answers.push([["debug mode on...", this.path.getCurrent().getAllNext().length], this.mineral.mineral.name])
 		}
 		else{
-			this.answers[this.rockNum - 1].push(name);
+			this.answers[this.mineralNum - 1].push(name);
 		}
 	}
 
@@ -139,7 +145,7 @@ export default class Assignment {
 	}
 
 	recordSkip(){
-		this.answers.push([-1, this.rock.rock.name]);
+		this.answers.push([-1, this.mineral.mineral.name]);
 	}
 }
 

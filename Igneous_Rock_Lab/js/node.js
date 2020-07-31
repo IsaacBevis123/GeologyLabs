@@ -1,8 +1,10 @@
 export default class Node {
-	constructor(value, step) {
+	constructor(value, step, is_end, end) {
 		this.value = value;
 		this.next = [];
 		this.step = step;
+		this.is_end = is_end;
+		this.end = end;
 	}
 
 	setNext(newNode) {
@@ -28,5 +30,13 @@ export default class Node {
 
 	getStep(){
 		return this.step;
+	}
+
+	isEnd() {
+		return this.is_end;
+	}
+
+	getEnd() {
+		return this.end;
 	}
 }
