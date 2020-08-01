@@ -26,22 +26,22 @@ async function clickHandler(e) {
 		if (e.target.dataset.opt < assignment.path.getCurrent().getAllNext().length){
 			if (assignment.checkCorrect(e.target.dataset.opt) || DEBUG_MODE){
 				if (assignment.isEnd()){
-					console.log("first")
+					//console.log("first")
 					STATE = "typeName";
 					assignment.markCorrect(e.target.dataset.opt);
-					console.log("pushing " + e.target.dataset.opt + "to temp_path");
+					//console.log("pushing " + e.target.dataset.opt + "to temp_path");
 					temp_path.push(e.target.dataset.opt);
-					console.log("pushing " + temp_path + "to paths");
+					//console.log("pushing " + temp_path + "to paths");
 					paths.push([temp_path]);
 					temp_path = [];
 				}
 				else { // step < 4
-					console.log("pushing " + e.target.dataset.opt + "to temp_path");
+					//console.log("pushing " + e.target.dataset.opt + "to temp_path");
 					temp_path.push(e.target.dataset.opt)
 					assignment.advance(e.target.dataset.opt);
 					assignment.drawCurrentOptions();
 					if (assignment.isEnd()){
-						console.log("second")
+						//console.log("second")
 						//let temp_link = "../figures/" + assignment.table[1]
 						document.getElementById("mineralNameDiv").style.display = "block";
 

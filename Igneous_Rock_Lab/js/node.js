@@ -4,6 +4,7 @@ export default class Node {
 		this.next = [];
 		this.step = step;
 		this.is_end = is_end;
+		console.log("setting this.end to " + end)
 		this.end = end;
 	}
 
@@ -37,6 +38,7 @@ export default class Node {
 	}
 
 	getEnd() {
+		console.log("returning " + this.end)
 		return this.end;
 	}
 }

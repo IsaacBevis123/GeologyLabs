@@ -54,25 +54,22 @@ export default class MineralPath {
 			.setNext(new Node(["Light colored"], "Other Properties", false));
 
 		//step 2 path 0 0
-		this.start.getNext(0).getNext(0).setNext(new Node(["100%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["75%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["50%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["25%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["0%"], "name", true, [0, "../pictures/Table_2.1"]));
+		this.start.getNext(0).getNext(0).setNext(new Node(["Quartz, Orthoclase, or", "Na-rich (light-colored) Plagioclase"], "name", true, 0))
+			.setNext(new Node(["Na-rich (light-colored) Plagioclase"], "name", true, 0))
+			.setNext(new Node(["Hornblende and Na-rich", "(light-colored) Plagioclase"], "name", true, 0))
+			.setNext(new Node(["Na-rich (light-colored) Plagioclase"], "name", true, 0));
 
 		//step 2 path 0 1
-		this.start.getNext(0).getNext(1).setNext(new Node(["100%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["75%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["50%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["25%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["0%"], "name", true, [0, "../pictures/Table_2.1"]));
+		this.start.getNext(0).getNext(1).setNext(new Node(["Quartz, Orthoclase, or", "Na-rich (light-colored) Plagioclase"], "name", true, 0))
+			.setNext(new Node(["Na-rich (light-colored) Plagioclase"], "name", true, 0))
+			.setNext(new Node(["Hornblende and Na-rich", "(light-colored) Plagioclase"], "name", true, 0))
+			.setNext(new Node(["Na-rich (light-colored) Plagioclase"], "name", true, 0));
 
 		//step 2 path 0 2
-		this.start.getNext(0).getNext(2).setNext(new Node(["100%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["75%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["50%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["25%"], "name", true, [0, "../pictures/Table_2.1"]))
-			.setNext(new Node(["0%"], "name", true, [0, "../pictures/Table_2.1"]));
+		this.start.getNext(0).getNext(2).setNext(new Node(["Quartz, Orthoclase, or", "Na-rich (light-colored) Plagioclase"], "name", true, 0))
+			.setNext(new Node(["Na-rich (light-colored) Plagioclase"], "name", true, 0))
+			.setNext(new Node(["Hornblende and Na-rich", "(light-colored) Plagioclase"], "name", true, 0))
+			.setNext(new Node(["Na-rich (light-colored) Plagioclase"], "name", true, 0));
 
 		//step 2 path 1 0
 		this.start.getNext(1).getNext(0).setNext(new Node(["Quartz > 20%"], "Other properties", false))
