@@ -94,7 +94,7 @@ function keyHandler(e){
 	if (STATE == "typeName"){
 		if (e.key == "Enter"){
 			if (document.getElementById("mineralName").value == ""){
-				alert("Please type a mineral name in the text box.");
+				alert("Please type a name in the text box.");
 			}
 			else{
 				assignment.addStudentAnswer(document.getElementById("mineralName").value, DEBUG_MODE, paths);
